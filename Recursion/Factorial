@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std;
+
+int fact(int n)
+{
+
+//base condition
+    if(n==0)
+    return 1;
+
+//recursive call
+    return n*fact(n-1);
+}
+
+int main(){
+
+//taking input 
+    int n;
+    cin>>n;
+
+//function call
+    int ans=fact(n);
+
+//display output 
+    cout<<ans<<endl;
+   
+}
+
+
+# TIME COMPLEXITY 
+
+The time complexity of a recursive factorial function is O(n) beacause it calls the function n times .
+
+#SPACE COMPLEXITY
+
+The space complexity of a recursive factorial function is O(n) because it function call stack is n size .
