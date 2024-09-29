@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+
+int power(int n ){
+
+    //base case 
+    if(n==0){
+        return 1;
+    }
+    
+    //recursive relation 
+    return 2*power(n-1);
+}
+
+int main(){
+
+//taking input 
+
+    int n;
+    cout<<"enter the power no to calculate:"<<endl;
+    cin>>n;
+
+    int ans= power(n);
+
+//display output
+    cout<<"the power of 2 is "<<" "<<ans<<endl;
+
+    return 0;
+}
+
+/*
+@TIME COMPLEXITY 
+
+The time complexity is O(n) because it calls the function n times .
+
+@SPACE COMPLEXITY
+
+The space complexity is O(1) because it doesnt require any extra space .
+
+*/
