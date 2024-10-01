@@ -63,3 +63,12 @@ int main(){
     int ans= fib(n);
     cout<<ans<<endl;
 }
+
+
+
+@ COMPLEXITY
+
+1.Time complexity: O(2^n)
+2.Space complexity: O(n)
+
+
