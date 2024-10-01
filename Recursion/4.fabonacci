@@ -64,7 +64,8 @@ int main(){
     cout<<ans<<endl;
 }
 
-
+APPROACH 3
+through dyanamic programing 
 
 @ COMPLEXITY
 
