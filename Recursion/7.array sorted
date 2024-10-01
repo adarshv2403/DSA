@@ -31,3 +31,9 @@ else{
   cout<<"array unsorted"<<endl;
 }
 }
+
+
+@COMPLEXITY 
+
+Time complexity: O(n), where n is the size of the array.
+Space complexity: O(n), due to the recursive calls.
