@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+
+bool issorted(int arr[],int size){
+
+    //base 
+
+    if(size==0||size==1){
+        return true;
+
+        //processing 
+
+        if(arr[0]<arr[1]){
+            return true;
+        }
+
+        return issorted(arr+1,size-1);
+
+    }
+}
+
+int main(){
+    int arr[5]={1,4,5,3,2};
+    int size=5;
+   
+  bool ans =  issorted(arr,size); 
+  if(ans){
+    cout<<"array is sorted"<<endl;
+  }
+else{
+  cout<<"array unsorted"<<endl;
+}
+}
