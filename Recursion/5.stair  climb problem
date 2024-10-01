@@ -23,3 +23,9 @@ cin>>n;
 int ans=waystoclimb(n);
 cout<<ans<<endl;
 }
+
+
+@COMPLEXITY 
+
+Time complexity: O(2^n)
+Space complexity: O(n)
