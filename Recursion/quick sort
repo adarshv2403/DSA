@@ -1,0 +1,72 @@
+#include<iostream>
+using namespace std;
+
+int partition(int arr[],int s,int e){
+
+    //choosing frst elemnt as pivot 
+
+    int pivot=arr[s];
+
+    //counting elemnts less than pivot element 
+    int cnt=0;
+    for(int i=s+1;i<=e;i++)//leaving frst elemnt and going till last to traverse 
+    {
+        if(arr[i]<=pivot)
+        cnt++;
+    }
+
+  int pivotindex=s+cnt; //finding the pivot elment index for swapping 
+  swap(arr[pivotindex],arr[s]);  //swapping the  elemnt with pivot elemnt 
+
+
+//now arrranging left and rght part 
+  int i=s; //frst element 
+  int j=e; //last element 
+
+  while(i<pivotindex && j>pivotindex) //checking the range 
+  {
+    while(arr[i]<=pivot){ //allowing theh equal elemnts on the left 
+        i++;
+    }
+
+    while(arr[j]>pivot){
+        j--;
+    }
+
+    if(i<pivotindex && j>pivotindex){
+        swap(arr[i++],arr[j--]);
+    }
+  }
+   return pivotindex;
+
+}
+
+void quicksort(int arr[],int s,int e){
+
+    //base case
+    if(s>=e){
+        return;
+    }
+    
+    //doing partion 
+    int p=partition(arr,s,e);
+
+    //sorting frst half and scnd hlf 
+    quicksort(arr,s,p-1); //for left side
+    quicksort(arr,p+1,e); //for rght side 
+}
+
+int main(){
+
+    int arr[22]={43, 595, 348, 857, 684, 94, 108, 542, 732, 655, 563, 434, 964, 92 ,680, 434, 321, 966 ,835, 774, 65 ,984};
+    int n=22;
+    
+    //functiion call
+    quicksort(arr,0,n-1);
+    
+    //to display the array
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
