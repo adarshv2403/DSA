@@ -1,0 +1,111 @@
+#include<iostream>
+using namespace std;
+
+
+void merge(int arr[],int s,int e){
+
+    int mid=s+(e-s)/2;
+
+    int length1=mid-s+1;
+    int length2=e-mid;
+
+    int* first=new int [length1];
+    int* second=new int [length2]; 
+
+    //half value of main array is stored in firt new array 
+
+    int mainArrayIndex = s;
+    for(int i=0; i<length1; i++) {
+        first[i] = arr[mainArrayIndex++];
+    }
+
+    //second half of the value stored in svnd new array 
+     mainArrayIndex = mid+1;
+    for(int i=0; i<length2; i++) {
+        second[i] = arr[mainArrayIndex++];
+    }
+
+    int index1 = 0;
+    int index2 = 0;
+    mainArrayIndex = s;
+
+    while(index1 < length1 && index2 < length2) {
+        if(first[index1] < second[index2]) {
+            arr[mainArrayIndex++] = first[index1++];
+        }
+        else{
+            arr[mainArrayIndex++] = second[index2++];
+        }
+    }   
+    
+     while(index1 < length1) {
+        arr[mainArrayIndex++] = first[index1++];
+    }
+  
+    while(index2 < length2 ) {
+        arr[mainArrayIndex++] = second[index2++];
+    }
+
+    delete []first;
+    delete []second;
+}
+
+void mergesort(int arr[],int s,int e){
+
+if(s>=e){
+    return;
+}
+
+int mid=s+(e-s)/2;
+
+
+//left wale ko sort krr do 
+mergesort(arr,s,mid);
+
+//right wale ko sort 
+mergesort(arr,mid+1,e);
+
+//merge krne ke liye after splitting 
+merge(arr,s,e);
+}
+
+int main() {
+
+    int arr[10]={95,48,46,17,88,91,49,04,61,17};
+    int n=10;
+
+    mergesort(arr,0,n-1);
+
+    for(int i=0;i<n;i++) {
+        cout<<arr[i]<<" ";}
+        cout<<endl;
+    }
+
+
+/* steps to solve this 
+1. call a merge sort function in main function.
+2. in merge sort function 
+ a.base case s>=e return
+ b.recurense relation 
+   @ merge sort frst prt 
+   @ merge ort secnd half 
+c. now merge the sorted function i.e merge(arr,s,e)
+
+3. now make a merge function
+ a. find the mid 
+ b.find the length of frst half 
+ c.find the length of scnd half
+ d.make a new array for frst half of lenth 1
+ e.make a array for sencd half of length 2
+ 
+ now copy the frst half value of the array into new array of length 1
+ and again copy value of sncd hlf into new array of lngth 2 
+ 
+ 4. now merge the both array 
+ a.base condition 
+ array of 1 and sencd should be less than their length 
+ compare both array elemnts and store in main array 
+ 
+ now store the remaing part of array 1 and array two  
+ 
+ 5. delete the new formed array */
